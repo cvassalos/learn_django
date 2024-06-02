@@ -15,7 +15,7 @@
     <body>
         <ul>
             {% for month in months %}
-                <li><a href="{% url "month_challenge" month %}{{ month }}">{{ month|title }}</a></li>
+                <li><a href="{% url "month_challenge" month %}">{{ month|title }}</a></li>
             {% endfor %}
         </ul>
         <script src="" async defer></script>
