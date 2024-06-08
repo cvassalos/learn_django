@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 monthly_challenges = {
-    "january" : "Eat no meat for the entire month!",
+    "january" : "Eat meat for the entire month!",
     "february": "Walk for at least 20 minutes every day!",
     "march": "Learn Django for at least 20 minutes every day!",
     "april": "Learn Django for at least 20 minutes every day!",
@@ -53,6 +53,16 @@ def monthly_challenge(request, month):
         return render(request, "challenges/challenge.html", {
             "text": challenge_text,
             "month_name": month
+        })
+    except:
+        raise Http404()
+
+def weekly_challenge(request, day):
+    try:
+        day_text = weekly_challenges[day]
+        return render(request, "challenges/weekly_challenge.html", {
+            "text": day_text,
+            "day": day
         })
     except:
         raise Http404()

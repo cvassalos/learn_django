@@ -7,5 +7,6 @@ urlpatterns = [
     # path("march", views.march),
     path("", views.index, name="index"),
     path("<int:month>", views.monthly_challenge_by_number),
-    path("<str:month>", views.monthly_challenge, name="month_challenge")
+    path("month/<str:month>", views.monthly_challenge, name="month_challenge"),
+    path("day/<str:day>", views.weekly_challenge, name="weekly_challenge")
 ]

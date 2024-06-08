@@ -20,7 +20,7 @@
 
     <ul class="days">
         {% for day in days %}
-            <li><a href="">{{ day|title }}</a></li>
+            <li><a href="{% url "weekly_challenge" day %}">{{ day|title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
