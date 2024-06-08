@@ -18,11 +18,23 @@ monthly_challenges = {
     "december": None
 }
 
+weekly_challenges = {
+    "monday" : "Study Python and JavaScript and do Chest/Back Day at the gym",
+    "tuesday" : "Study Java and for Network+ exam and do Arms/Shoulders Day at the gym",
+    "wednesday" : "Study Django and JavaScript and do Legs Day at the gym",
+    "thursday" : "Study Java and for Network+ exam and do cardio/core exercise",
+    "friday" : "Study Python and JavaScript and do Chest/Back Day at the gym",
+    "saturday" : "Study Java and for Network+ exam and do Arms/Shoulders Day at the gym",
+    "sunday" : "Study Django and JavaScript and do Legs Day at the gym"
+}
+
 def index(request):
     months = list(monthly_challenges.keys())
     
+    days = list(weekly_challenges.keys())
     return render(request, "challenges/index.html", {
-        "months": months
+        "months": months,
+        "days" : days
     })
 
 def monthly_challenge_by_number(request, month):
