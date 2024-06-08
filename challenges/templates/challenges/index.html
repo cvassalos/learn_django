@@ -12,9 +12,15 @@
 
 {% block content %}
     {% include "challenges/includes/header.html" %}
-    <ul>
+    <ul class="months">
         {% for month in months %}
             <li><a href="{% url "month_challenge" month %}">{{ month|title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <ul class="days">
+        {% for day in days %}
+            <li><a href="">{{ day|title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
