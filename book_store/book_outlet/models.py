@@ -1,5 +1,8 @@
+from django.core import validators
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -14,3 +17,6 @@ class Book(models.Model):
 
     def bestseller_string(self):
         return "Bestseller!" if self.is_bestselling else "Not a Bestseller"
+
+    def get_absolute_url(self):
+        return reverse("book_detail", args=[self.id])
