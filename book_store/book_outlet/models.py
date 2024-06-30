@@ -2,7 +2,7 @@ from django.core import validators
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
-
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -23,5 +23,5 @@ class Book(models.Model):
         return reverse("book_detail", args=[self.id])
 
     def save(self, *args, **kwargs):
-        
+        self.slug = slugify(self.title)
         super().save(*args, **kwargs)
