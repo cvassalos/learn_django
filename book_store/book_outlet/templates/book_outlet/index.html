@@ -10,4 +10,6 @@
             <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a> (Rating: {{ book.rating }})</li>
         {% endfor %}
     </ul>
+
+    <a href="{% url "bestsellers" %}"><h3>List of Bestsellers</h3></a>
 {% endblock %}

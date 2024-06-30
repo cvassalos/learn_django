@@ -11,6 +11,7 @@ class Book(models.Model):
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     author = models.CharField(null=True, max_length=100)
     is_bestselling = models.BooleanField(default=False)
+    slug = models.SlugField(default="", null=False)
 
     def __str__(self):
         return f"{self.title} ({self.rating}), Author: {self.author}, {self.bestseller_string()}"
@@ -20,3 +21,7 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse("book_detail", args=[self.id])
+
+    def save(self, *args, **kwargs):
+        
+        super().save(*args, **kwargs)

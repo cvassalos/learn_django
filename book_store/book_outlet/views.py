@@ -21,3 +21,9 @@ def book_detail(request, id):
         "rating": book.rating,
         "is_bestseller": book.is_bestselling
     })
+
+def bestsellers(request):
+    books = Book.objects.filter(rating__gte=3)
+    return render(request, "book_outlet/bestseller.html", {
+        "books": books
+    })
