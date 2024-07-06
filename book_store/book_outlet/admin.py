@@ -9,8 +9,5 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ("author", "rating",)
     list_display = ("title", "author",)
 
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ("author",)
-
 admin.site.register(Book, BookAdmin)
-admin.site.register(Author, AuthorAdmin)
+admin.site.register(Author)
