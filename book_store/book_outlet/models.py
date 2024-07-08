@@ -11,6 +11,13 @@ class Address(models.Model):
     postal_code = models.CharField(max_length=5)
     city = models.CharField(max_length=50)
 
+    def fullAddress(self):
+        return f"{self.street}, {self.city} {self.postal_code}"
+
+    def __str__(self):
+        return self.fullAddress()
+        
+
 
 class Author(models.Model): 
     first_name = models.CharField(max_length=100)
