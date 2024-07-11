@@ -31,5 +31,6 @@ def post_detail(request, slug):
     #     if post["slug"] == slug:
     #         selected_post = post
     return render(request, "blog/post-detail.html", {
-        "post": identified_post
+        "post": identified_post,
+        "post_tags": identified_post.tags.all()
     })
