@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 
 from .models import Post
 
@@ -20,12 +21,14 @@ def starting_page(request):
     })
 
 def posts(request):
+    all_posts = Post.objects.all().order_by("-date")
     return render(request, "blog/all-posts.html", {
         "posts": all_posts
     })
 
 def post_detail(request, slug):
-    selected_post = next(post for post in all_posts if post['slug'] == slug)
+    selected_post = get_object_or_404(Post, slug = slug)
+    # selected_post = next(post for post in all_posts if post['slug'] == slug)
 
     # selected_post = []
     # for post in all_posts:
