@@ -70,4 +70,6 @@ main {
 #tag {
   background-color: white;
   color: #390281;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
