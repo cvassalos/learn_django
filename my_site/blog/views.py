@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from .models import Post
 
@@ -10,11 +11,19 @@ def get_date(post):
 
 # Create your views here.
 
-def starting_page(request): 
-    latest_posts = Post.objects.all().order_by("-date")[:3]
-    return render(request, "blog/index.html", {
-        "posts": latest_posts
-    })
+class StartingPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    ordering = ["-date"]
+    context_object_name = "posts"
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = queryset[:3]
+        return data
+        
+    
+
 
 def posts(request):
     all_posts = Post.objects.all().order_by("-date")
