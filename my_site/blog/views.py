@@ -23,13 +23,12 @@ class StartingPageView(ListView):
         return data
         
     
+class AllPostsView(ListView):
+    template_name = "blog/all-posts.html"
+    model = Post
+    order = ["-date"]
+    context_object_name = "all_posts"
 
-
-def posts(request):
-    all_posts = Post.objects.all().order_by("-date")
-    return render(request, "blog/all-posts.html", {
-        "posts": all_posts
-    })
 
 def post_detail(request, slug):
     identified_post = get_object_or_404(Post, slug=slug)
