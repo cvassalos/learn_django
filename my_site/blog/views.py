@@ -66,6 +66,10 @@ class SinglePostView(View):
 
         
 class ReadLaterView(View):
+    def get(self, request):
+        pass 
+        
+        
     def post(self, request):
         stored_posts = request.session.get("stored_posts")
         
